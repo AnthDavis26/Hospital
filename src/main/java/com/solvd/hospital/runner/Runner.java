@@ -16,7 +16,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -80,6 +79,6 @@ public class Runner {
 		File file = FileUtils.getFile("src/main/resources/stuff.txt");
 		String[] fileWords = StringUtils.split(FileUtils.readFileToString(file, StandardCharsets.UTF_8));
 		HashSet<String> set = new HashSet<String>(Arrays.asList(fileWords));
-		FileUtils.write(new File("src/main/resources/result.txt"),set.size() + " unique words found.", StandardCharsets.UTF_8);
+		FileUtils.write(new File("src/main/resources/result.txt"), set.size() + " unique words found.", StandardCharsets.UTF_8);
 	}
 }
