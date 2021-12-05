@@ -2,11 +2,48 @@ package com.solvd.hospital.locations;
 
 import com.solvd.hospital.exceptions.InvalidGeographyException;
 
-public class Address {
+import java.util.Objects;
+
+public class Address extends Location {
 	private String street;
+	private String number;
 	private String unit;
 	private City city;
 	private String zip;
+
+	public Address(String number, String street, City city, String zip) {
+		this(number, street, "", city, zip);
+	}
+
+	public Address(String number, String street, String unit, City city, String zip) {
+		this.number = number;
+		this.street = street;
+		this.unit = unit;
+		this.city = city;
+		this.zip = zip;
+		this.unit = unit;
+	}
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Address address = (Address) o;
+		return Objects.equals(street, address.street) && Objects.equals(number, address.number)
+				&& Objects.equals(unit, address.unit) && Objects.equals(city, address.city)
+				&& Objects.equals(zip, address.zip);
+	}
+
+	@Override
+	public String toString() {
+		return number + " " + street + (unit != "" ? "\n" + unit : "")
+				+ "\n" + city + ", " + city.getState() + "\n" + zip + "\n" + city.getState().getCountry();
+	}
 	
 	public String getStreet() throws InvalidGeographyException {
 		return street;

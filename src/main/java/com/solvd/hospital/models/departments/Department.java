@@ -1,13 +1,6 @@
 package com.solvd.hospital.models.departments;
 
-import com.solvd.hospital.models.employees.Employee;
+import com.solvd.hospital.interfaces.models.departments.IDepartment;
 
-public class Department {
-	public void addToStaff(Employee employee) {
-		// ...
-	}
-	
-	public void removeFromStaff(Employee employee) {
-		// ...
-	}
+public class Department implements IDepartment {
 }

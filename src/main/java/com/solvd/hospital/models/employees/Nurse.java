@@ -38,4 +38,14 @@ public class Nurse extends Employee implements INurse {
 	@Override
 	public void rest() {
 	}
+
+	@Override
+	public void eat() {
+
+	}
+
+	@Override
+	public void sleep() {
+
+	}
 }

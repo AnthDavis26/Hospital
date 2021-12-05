@@ -66,4 +66,14 @@ public class Doctor extends Employee implements IDoctor {
 	@Override
 	public void orderLabTestsFor(Patient patient) {
 	}
+
+	@Override
+	public void eat() {
+
+	}
+
+	@Override
+	public void sleep() {
+
+	}
 }

@@ -1,5 +1,5 @@
 package com.solvd.hospital.locations;
 
-public class Province {
+public class Province extends Location {
     private Country country;
 }

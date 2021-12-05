@@ -16,4 +16,14 @@ public class Technician extends Employee {
 	public void rest() {
 
 	}
+
+	@Override
+	public void eat() {
+
+	}
+
+	@Override
+	public void sleep() {
+
+	}
 }

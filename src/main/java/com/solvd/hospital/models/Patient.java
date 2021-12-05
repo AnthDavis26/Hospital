@@ -1,21 +1,31 @@
 package com.solvd.hospital.models;
 
 import com.solvd.hospital.interfaces.models.IPatient;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Patient extends Person implements IPatient {
-	enum Condition {
-		STABLE,
-		CRITICAL,
-		DECEASED
-	}
 
+	@Override
 	public void tellSymptomsTo(Person person) {
 		// ...
 	}
 
+	@Override
 	public void waitForDoctor() {
 		// ...
+	}
+
+	@Override
+	public void takeMedication() {
+
+	}
+
+	@Override
+	public void eat() {
+
+	}
+
+	@Override
+	public void sleep() {
+
 	}
 }
