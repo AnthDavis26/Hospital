@@ -1,5 +1,6 @@
 package com.solvd.hospital.runner;
 
+import com.solvd.hospital.enums.StateName;
 import com.solvd.hospital.exceptions.InvalidEmployeeException;
 import com.solvd.hospital.exceptions.InvalidWeightException;
 import com.solvd.hospital.exceptions.UndiagnosedPatientException;
@@ -17,18 +18,18 @@ import com.solvd.hospital.models.employees.Receptionist;
 import com.solvd.hospital.utils.LinkedList;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
 import java.util.*;
 
 public class Runner {
     private static final Logger logger = LogManager.getLogger(Runner.class);
 
-	public static void main(String args[]) throws IOException {
+	public static void main(String[] args) throws IOException, ParseException {
 		// Doctor-patient treatment simulation
 		Doctor doctor = new Doctor();
 		Nurse nurse = new Nurse();
@@ -89,13 +90,11 @@ public class Runner {
 		for (String s : fileWords)
 			map.put(s, !map.containsKey(s) ? 0 : map.get(s) + 1);
 
-		for (Map.Entry<String, Integer> entry : map.entrySet())
-			logger.info("\"" + entry.getKey() + "\", " + entry.getValue());
+		map.entrySet().forEach(
+			(e) -> logger.info("\"" + e.getKey() + "\", " + e.getValue())
+		);
 
-		State state = new State("California", new Country("USA"));
-		City city = new City("Los Osos", state);
-		Address address = new Address("1351", "Los Olivos Ave.", "Apt M", city, "93402");
-
-		logger.info(address);
+		doctor.setDateOfBirth("June 20, 2001");
+		logger.info(doctor.getDateOfBirth());
 	}
 }

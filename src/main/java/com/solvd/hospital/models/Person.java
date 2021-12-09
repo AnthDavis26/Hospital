@@ -1,10 +1,16 @@
 package com.solvd.hospital.models;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.util.List;
 import java.time.LocalDate;
 
+import com.solvd.hospital.enums.Sex;
 import com.solvd.hospital.interfaces.models.IPerson;
 import com.solvd.hospital.locations.Address;
+import org.apache.commons.lang3.time.DateUtils;
 
 public abstract class Person implements IPerson {
 	private String firstName;
@@ -15,7 +21,7 @@ public abstract class Person implements IPerson {
 	private String suffix;
 	private String gender;
 	private String pronoun;
-	private String sex;
+	private Sex sex;
 	private String race;
 	private String phone;
 	private Double weightLbs;
@@ -23,7 +29,7 @@ public abstract class Person implements IPerson {
 	private LocalDate dateOfBirth;
 	private List<String> allergies;
 	private List<String> illnesses;
-	
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -88,11 +94,11 @@ public abstract class Person implements IPerson {
 		this.pronoun = pronoun;
 	}
 	
-	public String getSex() {
+	public Sex getSex() {
 		return sex;
 	}
 	
-	public void setSex(String sex) {
+	public void setSex(Sex sex) {
 		this.sex = sex;
 	}
 	
@@ -131,8 +137,13 @@ public abstract class Person implements IPerson {
 		return dateOfBirth;
 	}
 	
-	public void setDateOfBirth(int month, int day, int year) {
-		this.dateOfBirth = LocalDate.of(year, month, day);
+	public void setDateOfBirth(String dateOfBirth) throws ParseException {
+		this.dateOfBirth = DateUtils.parseDate(dateOfBirth, "MMM dd yyyy", "MMM dd, yyyy",
+						"M/dd/yyyy").toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+	}
+
+	public void setDateOfBirth(LocalDate localDate) {
+		this.dateOfBirth = localDate;
 	}
 	
 	public List<String> getAllergies() {
@@ -142,6 +153,7 @@ public abstract class Person implements IPerson {
 	public void setAllergies(List<String> allergies) {
 		this.allergies = allergies;
 	}
+
 	public List<String> getIllnesses() {
 		return illnesses;
 	}

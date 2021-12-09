@@ -1,7 +1,10 @@
 package com.solvd.hospital.locations;
 
+import com.solvd.hospital.enums.StateName;
+
 public class State extends Location{
     private Country country;
+    private String acronym;
 
     @Override
     public int hashCode() {
@@ -18,8 +21,9 @@ public class State extends Location{
         return super.getName();
     }
 
-    public State(String name, Country country) {
-        super.setName(name);
+    public State(StateName name, Country country) {
+        super.setName(name.getName());
+        this.acronym = name.getAcronym();
         this.country = country;
     }
 
@@ -29,5 +33,13 @@ public class State extends Location{
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public String getAcronym() {
+        return acronym;
+    }
+
+    public void setAcronym(String acronym) {
+        this.acronym = acronym;
     }
 }
