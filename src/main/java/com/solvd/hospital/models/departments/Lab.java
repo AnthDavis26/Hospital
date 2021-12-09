@@ -7,6 +7,21 @@ import com.solvd.hospital.models.samples.UrineSample;
 public class Lab extends Department {
 	private List<BloodSample> bloodSamples;
 	private List<UrineSample> urineSamples;
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
+
+	@Override
+	public String toString() {
+		return super.toString();
+	}
 	
 	public List<BloodSample> getBloodSamples() {
 		return bloodSamples;

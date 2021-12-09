@@ -2,22 +2,28 @@ package com.solvd.hospital.models.buildings;
 
 import com.solvd.hospital.locations.Address;
 
+import java.util.Objects;
+
 public abstract class Building {
 	private Address address;
+	private String name;
 
 	@Override
-	public int hashCode() {
-		return super.hashCode();
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Building building = (Building) o;
+		return Objects.equals(address, building.address) && Objects.equals(name, building.name);
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		return super.equals(obj);
+	public int hashCode() {
+		return Objects.hash(address, name);
 	}
 
 	@Override
 	public String toString() {
-		return super.toString();
+		return address.toString();
 	}
 
 	public Address getAddress() {

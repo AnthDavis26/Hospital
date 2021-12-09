@@ -1,5 +1,6 @@
 package com.solvd.hospital.runner;
 
+import com.solvd.hospital.enums.StateName;
 import com.solvd.hospital.exceptions.InvalidEmployeeException;
 import com.solvd.hospital.exceptions.InvalidWeightException;
 import com.solvd.hospital.exceptions.UndiagnosedPatientException;
@@ -17,7 +18,6 @@ import com.solvd.hospital.models.employees.Receptionist;
 import com.solvd.hospital.utils.LinkedList;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.io.File;
@@ -28,7 +28,7 @@ import java.util.*;
 public class Runner {
     private static final Logger logger = LogManager.getLogger(Runner.class);
 
-	public static void main(String args[]) throws IOException {
+	public static void main(String[] args) throws IOException {
 		// Doctor-patient treatment simulation
 		Doctor doctor = new Doctor();
 		Nurse nurse = new Nurse();
@@ -92,7 +92,7 @@ public class Runner {
 		for (Map.Entry<String, Integer> entry : map.entrySet())
 			logger.info("\"" + entry.getKey() + "\", " + entry.getValue());
 
-		State state = new State("California", new Country("USA"));
+		State state = new State(StateName.CALIFORNIA, new Country("USA"));
 		City city = new City("Los Osos", state);
 		Address address = new Address("1351", "Los Olivos Ave.", "Apt M", city, "93402");
 
