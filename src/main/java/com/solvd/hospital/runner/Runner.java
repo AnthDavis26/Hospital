@@ -1,13 +1,8 @@
 package com.solvd.hospital.runner;
 
-import com.solvd.hospital.enums.StateName;
 import com.solvd.hospital.exceptions.InvalidEmployeeException;
 import com.solvd.hospital.exceptions.InvalidWeightException;
 import com.solvd.hospital.exceptions.UndiagnosedPatientException;
-import com.solvd.hospital.locations.Address;
-import com.solvd.hospital.locations.City;
-import com.solvd.hospital.locations.Country;
-import com.solvd.hospital.locations.State;
 import com.solvd.hospital.models.Diagnosis;
 import com.solvd.hospital.models.Patient;
 import com.solvd.hospital.models.Prescription;
@@ -17,6 +12,7 @@ import com.solvd.hospital.models.employees.Nurse;
 import com.solvd.hospital.models.employees.Receptionist;
 import com.solvd.hospital.utils.LinkedList;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.RegExUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -78,23 +74,28 @@ public class Runner {
 		for (int i = 1; i <= 25; i++)
 			linkedList.add(i);
 
-		for (Integer i : linkedList)
-			logger.info(i);
+		linkedList.forEach(
+				(n) -> logger.info(n)
+		);
 
 		// Output unique words in file and their frequencies
 		File file = FileUtils.getFile("src/main/resources/stuff.txt");
-		String[] fileWords = StringUtils.split(StringUtils.lowerCase
-				(FileUtils.readFileToString(file, StandardCharsets.UTF_8)));
-		HashMap<String, Integer> map = new HashMap<>();
-
-		for (String s : fileWords)
-			map.put(s, !map.containsKey(s) ? 0 : map.get(s) + 1);
-
-		map.entrySet().forEach(
-			(e) -> logger.info("\"" + e.getKey() + "\", " + e.getValue())
+		String[] fileWords = StringUtils.split(
+				StringUtils.lowerCase(
+				RegExUtils.replacePattern(
+				(FileUtils.readFileToString(file, StandardCharsets.UTF_8)),
+						"(\\'s)|(\\d(st|nd|rd|th))|\\d|[^\\w]", " "))
+							// Omit possessions, numbers, and non-word symbols
 		);
 
-		doctor.setDateOfBirth("June 20, 2001");
-		logger.info(doctor.getDateOfBirth());
+		SortedMap<String, Integer> map = new TreeMap<>();
+
+		Arrays.stream(fileWords).forEach(
+				(s) -> map.put(s, map.containsKey(s) ? map.get(s) + 1 : 1)
+		);
+
+		map.entrySet().forEach(
+			(e) -> logger.info(e)
+		);
 	}
 }
