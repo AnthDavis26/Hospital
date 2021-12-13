@@ -94,10 +94,10 @@ public class Runner {
 				(s) -> map.put(s, map.containsKey(s) ? map.get(s) + 1 : 1)
 		);
 
+		doctor.setDateOfBirth("June 20, 2001");
+		logger.info(doctor.getDateOfBirth());
 		map.entrySet().forEach(
 			(e) -> logger.info(e)
 		);
-
-
 	}
 }
