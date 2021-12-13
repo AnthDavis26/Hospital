@@ -5,6 +5,7 @@ import com.solvd.hospital.models.Patient;
 import com.solvd.hospital.models.buildings.Hospital;
 
 public class Ambulance extends Vehicle {
+	private boolean sirenIsOn;
 
 	public void carryPatient(Patient patient) {
 		// ...;
@@ -19,6 +20,6 @@ public class Ambulance extends Vehicle {
 	}
 	
 	public void toggleSiren() {
-		// ...
+		sirenIsOn = !sirenIsOn;
 	}
 }

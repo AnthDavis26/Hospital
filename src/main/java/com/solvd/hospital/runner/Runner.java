@@ -97,5 +97,7 @@ public class Runner {
 		map.entrySet().forEach(
 			(e) -> logger.info(e)
 		);
+
+
 	}
 }

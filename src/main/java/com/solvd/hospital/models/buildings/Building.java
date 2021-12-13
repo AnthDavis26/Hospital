@@ -6,19 +6,22 @@ import java.util.Objects;
 
 public abstract class Building {
 	private Address address;
-	private String name;
 
 	@Override
 	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (this == o)
+			return true;
+
+		if (o == null || getClass() != o.getClass())
+			return false;
+
 		Building building = (Building) o;
-		return Objects.equals(address, building.address) && Objects.equals(name, building.name);
+		return Objects.equals(address, building.address);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, name);
+		return Objects.hash(address);
 	}
 
 	@Override

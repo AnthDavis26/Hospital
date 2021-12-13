@@ -2,7 +2,9 @@ package com.solvd.hospital.locations;
 
 import com.solvd.hospital.exceptions.InvalidGeographyException;
 
+import javax.swing.text.html.Option;
 import java.util.Objects;
+import java.util.Optional;
 
 public class Address extends Location {
 	private String street;
@@ -41,7 +43,7 @@ public class Address extends Location {
 
 	@Override
 	public String toString() {
-		return number + " " + street + (unit != "" ? "\n" + unit : "")
+		return number + " " + street + (!Objects.equals(unit, "") ? "\n" + unit : "")
 				+ "\n" + city + ", " + city.getState() + "\n" + zip + "\n" + city.getState().getCountry();
 	}
 	
@@ -53,14 +55,14 @@ public class Address extends Location {
 		this.street = street;
 	}
 	
-	public String getUnit() throws InvalidGeographyException {
-		return unit;
+	public Optional<String> getUnit() {
+		return Optional.ofNullable(unit);
 	}
 	
 	public void setUnit(String unit) {
 		this.unit = unit;
 	}
-	
+
 	public City getCity() throws InvalidGeographyException {
 		return city;
 	}
