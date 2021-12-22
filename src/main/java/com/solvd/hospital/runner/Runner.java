@@ -3,10 +3,7 @@ package com.solvd.hospital.runner;
 import com.solvd.hospital.exceptions.InvalidEmployeeException;
 import com.solvd.hospital.exceptions.InvalidWeightException;
 import com.solvd.hospital.exceptions.UndiagnosedPatientException;
-import com.solvd.hospital.models.Diagnosis;
-import com.solvd.hospital.models.Patient;
-import com.solvd.hospital.models.Prescription;
-import com.solvd.hospital.models.TestResult;
+import com.solvd.hospital.models.*;
 import com.solvd.hospital.models.employees.Doctor;
 import com.solvd.hospital.models.employees.Nurse;
 import com.solvd.hospital.models.employees.Receptionist;
@@ -78,14 +75,14 @@ public class Runner {
 				(n) -> logger.info(n)
 		);
 
-		// Output unique words in file and their frequencies
-		File file = FileUtils.getFile("src/main/resources/stuff.txt");
+		// Output unique words in file and their counts
+		File file = FileUtils.getFile("src/main/resources/input.txt");
 		String[] fileWords = StringUtils.split(
 				StringUtils.lowerCase(
 				RegExUtils.replacePattern(
 				(FileUtils.readFileToString(file, StandardCharsets.UTF_8)),
 						"(\\'s)|(\\d(st|nd|rd|th))|\\d|[^\\w]", " "))
-							// Omit possessions, numbers, and non-word symbols
+							// Omit possessions, numbers, and numeric interpretations
 		);
 
 		SortedMap<String, Integer> map = new TreeMap<>();
@@ -94,10 +91,7 @@ public class Runner {
 				(s) -> map.put(s, map.containsKey(s) ? map.get(s) + 1 : 1)
 		);
 
-		doctor.setDateOfBirth("June 20, 2001");
-		logger.info(doctor.getDateOfBirth());
-		map.entrySet().forEach(
-			(e) -> logger.info(e)
-		);
+		FileUtils.write(FileUtils.getFile("src/main/resources/output.txt"),
+				map.entrySet().toString(), StandardCharsets.UTF_8);
 	}
 }
