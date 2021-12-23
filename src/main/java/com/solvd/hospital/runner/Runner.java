@@ -13,14 +13,17 @@ import org.apache.commons.lang3.RegExUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
-import java.util.*;
+import java.util.Arrays;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 public class Runner {
-    private static final Logger logger = LogManager.getLogger(Runner.class);
+    public static final Logger logger = LogManager.getLogger(Runner.class);
 
 	public static void main(String[] args) throws IOException, ParseException {
 		// Doctor-patient treatment simulation
@@ -91,7 +94,15 @@ public class Runner {
 				(s) -> map.put(s, map.containsKey(s) ? map.get(s) + 1 : 1)
 		);
 
+		// Output result
 		FileUtils.write(FileUtils.getFile("src/main/resources/output.txt"),
 				map.entrySet().toString(), StandardCharsets.UTF_8);
+
+		// Deadlock example
+		DeadlockThread1 thread1 = new DeadlockThread1();
+		DeadlockThread2 thread2 = new DeadlockThread2();
+
+		thread1.start();
+		thread2.start();
 	}
 }
