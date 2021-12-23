@@ -1,16 +1,14 @@
 package com.solvd.hospital.models;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.ZoneId;
-import java.util.List;
-import java.time.LocalDate;
-
 import com.solvd.hospital.enums.Sex;
 import com.solvd.hospital.interfaces.models.IPerson;
 import com.solvd.hospital.locations.Address;
 import org.apache.commons.lang3.time.DateUtils;
+
+import java.text.ParseException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.List;
 
 public abstract class Person implements IPerson {
 	private String firstName;

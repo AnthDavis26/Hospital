@@ -1,8 +1,9 @@
 package com.solvd.hospital.models.departments;
 
-import java.util.List;
 import com.solvd.hospital.models.samples.BloodSample;
 import com.solvd.hospital.models.samples.UrineSample;
+
+import java.util.List;
 
 public class Lab extends Department {
 	private List<BloodSample> bloodSamples;

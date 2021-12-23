@@ -1,8 +1,9 @@
 package com.solvd.hospital.models;
 
-import java.time.LocalDate;
 import com.solvd.hospital.models.employees.Doctor;
 import com.solvd.hospital.models.employees.Nurse;
+
+import java.time.LocalDate;
 
 public class AppointmentForm {
 	private Patient patient;

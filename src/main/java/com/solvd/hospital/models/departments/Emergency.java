@@ -1,9 +1,9 @@
 package com.solvd.hospital.models.departments;
 
-import java.util.Queue;
-
 import com.solvd.hospital.interfaces.models.departments.IEmergency;
 import com.solvd.hospital.models.Patient;
+
+import java.util.Queue;
 
 public class Emergency extends Department implements IEmergency {
 	private Queue<Patient> patientQueue;
