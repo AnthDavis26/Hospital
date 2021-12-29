@@ -24,10 +24,18 @@ public class ConnectionPool {
             return new Connection();
         }
 
-        return pool.take();
+        Connection con = null;
+
+        synchronized (pool) {
+            con = pool.take();
+        }
+
+        return con;
     }
 
     public void releaseConnection(Connection con) {
-        pool.add(con);
+        synchronized (pool) {
+            pool.add(con);
+        }
     }
 }

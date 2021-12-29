@@ -1,10 +1,15 @@
 package com.solvd.hospital.models.employees;
 
 import com.solvd.hospital.models.Patient;
+import com.solvd.hospital.models.PhoneCall;
 
 public class Receptionist extends Employee {
 	public void addToWaitingLine(Patient patient) {
-		// ...
+
+	}
+
+	public void transferPhoneCall(PhoneCall phoneCall, Employee employee) {
+
 	}
 
 	@Override

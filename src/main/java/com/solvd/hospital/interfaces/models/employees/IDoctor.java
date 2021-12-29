@@ -4,7 +4,6 @@ import com.solvd.hospital.exceptions.UndiagnosedPatientException;
 import com.solvd.hospital.models.Diagnosis;
 import com.solvd.hospital.models.Patient;
 import com.solvd.hospital.models.Prescription;
-import com.solvd.hospital.models.TestResult;
 
 public interface IDoctor extends IEmployee {
     void diagnose(Patient patient, Diagnosis diagnosis);
@@ -13,10 +12,9 @@ public interface IDoctor extends IEmployee {
     void endAppointment();
     void readForm();
     void orderProcedure(String procedure);
-    void prescribe(Patient patient, String prescription) throws UndiagnosedPatientException;
     void askAboutSymptoms(Patient patient);
-    TestResult runTestsOn(Patient patient);
-    void retrieveTestResult(TestResult testResult);
+    void runTestsOn(Patient patient);
+    void retrieveTestResult();
     void giveInstructionsTo(Patient patient, String instructions);
     void orderLabTestsFor(Patient patient);
 }

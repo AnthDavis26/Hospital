@@ -23,7 +23,7 @@ public abstract class Person implements IPerson {
 	private String race;
 	private String phone;
 	private Double weightLbs;
-	private Address address;
+	private Address residenceAddress;
 	private LocalDate dateOfBirth;
 	private List<String> allergies;
 	private List<String> illnesses;
@@ -124,11 +124,12 @@ public abstract class Person implements IPerson {
 		this.weightLbs = weightLbs;
 	}
 	
-	public Address getAddress() {
-		return address;
+	public Address getResidenceAddress() {
+		return residenceAddress;
 	}
-	public void setAddress(Address address) {
-		this.address = address;
+
+	public void setResidenceAddress(Address residenceAddress) {
+		this.residenceAddress = residenceAddress;
 	}
 	
 	public LocalDate getDateOfBirth() {

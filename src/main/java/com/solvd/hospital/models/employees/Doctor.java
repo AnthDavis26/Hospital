@@ -5,7 +5,6 @@ import com.solvd.hospital.interfaces.models.employees.IDoctor;
 import com.solvd.hospital.models.Diagnosis;
 import com.solvd.hospital.models.Patient;
 import com.solvd.hospital.models.Prescription;
-import com.solvd.hospital.models.TestResult;
 
 public class Doctor extends Employee implements IDoctor {
 	@Override
@@ -42,21 +41,15 @@ public class Doctor extends Employee implements IDoctor {
 	}
 
 	@Override
-	public void prescribe(Patient patient, String prescription)
-			throws UndiagnosedPatientException {
-	}
-
-	@Override
 	public void askAboutSymptoms(Patient patient) {
 	}
 
 	@Override
-	public TestResult runTestsOn(Patient patient) {
-		return new TestResult();
+	public void runTestsOn(Patient patient) {
 	}
 
 	@Override
-	public void retrieveTestResult(TestResult testResult) {
+	public void retrieveTestResult() {
 	}
 
 	@Override

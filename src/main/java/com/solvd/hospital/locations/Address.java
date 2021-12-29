@@ -22,7 +22,6 @@ public class Address extends Location {
 		this.unit = unit;
 		this.city = city;
 		this.zip = zip;
-		this.unit = unit;
 	}
 
 	@Override

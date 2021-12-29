@@ -46,4 +46,8 @@ public class Patient extends Person implements IPatient {
 	public PatientCondition getCondition() {
 		return condition;
 	}
+
+	public void setCondition(PatientCondition condition) {
+		this.condition = condition;
+	}
 }

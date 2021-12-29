@@ -33,13 +33,6 @@ public class Node<T> {
 
         Node other = (Node) obj;
 
-        if (value != other.getValue())
-            return false;
-        if (prev != other.getPrev())
-            return false;
-        if (next != other.getNext())
-            return false;
-
         return value.equals(other.getValue());
     }
 

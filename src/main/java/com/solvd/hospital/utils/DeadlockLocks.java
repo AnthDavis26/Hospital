@@ -1,6 +1,6 @@
-package com.solvd.hospital.models;
+package com.solvd.hospital.utils;
 
-public class DeadlockLocks {
+abstract class DeadlockLocks {
     public static Object lock1 = new Object();
     public static Object lock2 = new Object();
 }

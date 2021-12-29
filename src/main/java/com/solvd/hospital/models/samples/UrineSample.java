@@ -1,40 +1,55 @@
 package com.solvd.hospital.models.samples;
 
 public class UrineSample extends Sample {
-	private float acidity;
-	private float blood;
-	private float protein;
-	private float sugar;
-	
-	public float getAcidity() {
-		return acidity;
+	private float acidityLevel;
+	private float bloodLevel;
+	private float proteinLevel;
+	private float sugarLevel;
+
+	@Override
+	public int hashCode() {
+		return super.hashCode();
 	}
-	
-	public void setAcidity(float acidity) {
-		this.acidity = acidity;
+
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
 	}
-	
-	public float getBlood() {
-		return blood;
+
+	@Override
+	public String toString() {
+		return super.toString();
 	}
-	
-	public void setBlood(float blood) {
-		this.blood = blood;
+
+	public float getAcidityLevel() {
+		return acidityLevel;
 	}
-	
-	public float getProtein() {
-		return protein;
+
+	public void setAcidityLevel(float acidityLevel) {
+		this.acidityLevel = acidityLevel;
 	}
-	
-	public void setProtein(float protein) {
-		this.protein = protein;
+
+	public float getBloodLevel() {
+		return bloodLevel;
 	}
-	
-	public float getSugar() {
-		return sugar;
+
+	public void setBloodLevel(float bloodLevel) {
+		this.bloodLevel = bloodLevel;
 	}
-	
-	public void setSugar(float sugar) {
-		this.sugar = sugar;
+
+	public float getProteinLevel() {
+		return proteinLevel;
+	}
+
+	public void setProteinLevel(float proteinLevel) {
+		this.proteinLevel = proteinLevel;
+	}
+
+	public float getSugarLevel() {
+		return sugarLevel;
+	}
+
+	public void setSugarLevel(float sugarLevel) {
+		this.sugarLevel = sugarLevel;
 	}
 }

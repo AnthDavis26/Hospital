@@ -1,7 +1,7 @@
-package com.solvd.hospital.locations;
+package com.solvd.hospital.models;
 
-public class Location {
-    private String name;
+public class PhoneCall {
+    private String senderNumber;
 
     @Override
     public int hashCode() {
@@ -18,11 +18,11 @@ public class Location {
         return super.toString();
     }
 
-    public String getName() {
-        return name;
+    public String getSenderNumber() {
+        return senderNumber;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSenderNumber(String senderNumber) {
+        this.senderNumber = senderNumber;
     }
 }
