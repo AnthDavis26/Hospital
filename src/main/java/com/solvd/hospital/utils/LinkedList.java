@@ -6,10 +6,12 @@ import java.util.Objects;
 public class LinkedList<T> implements Iterable<T> {	
 	private Node head;
 	private Node current;
+	private int theSize;
 	
 	public LinkedList() {
 		head = new Node(null);
 		current = head;
+		theSize = 0;
 	}
 	
 	@Override
@@ -40,6 +42,23 @@ public class LinkedList<T> implements Iterable<T> {
 		node.setPrev(current);
 		current.setNext(node);
 		current = current.getNext();
+		theSize++;
+	}
+
+	public void pop(){
+		Node itr = head;
+
+		for (int i = 0; i < size()-1; i++)
+		{
+			itr = itr.getNext();
+		}
+
+		itr.setNext(null);
+		theSize--;
+	}
+
+	public int size() {
+		return theSize;
 	}
 
 	public Iterator<T> iterator() {

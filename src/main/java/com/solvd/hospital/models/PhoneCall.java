@@ -1,5 +1,7 @@
 package com.solvd.hospital.models;
 
+import java.util.Optional;
+
 public class PhoneCall {
     private String senderNumber;
 
@@ -18,8 +20,8 @@ public class PhoneCall {
         return super.toString();
     }
 
-    public String getSenderNumber() {
-        return senderNumber;
+    public Optional<String> getSenderNumber() {
+        return Optional.of(senderNumber);
     }
 
     public void setSenderNumber(String senderNumber) {

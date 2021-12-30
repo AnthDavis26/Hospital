@@ -2,7 +2,7 @@ package com.solvd.hospital.models.vehicles;
 
 import com.solvd.hospital.interfaces.models.vehicles.IDrivable;
 
-abstract class Drivable implements IDrivable {
+public abstract class Vehicle implements IDrivable {
 	@Override
 	public int hashCode() {
 		return super.hashCode();

@@ -4,6 +4,7 @@ import com.solvd.hospital.models.samples.BloodSample;
 import com.solvd.hospital.models.samples.UrineSample;
 
 import java.util.List;
+import java.util.Optional;
 
 public class Lab extends Department {
 	private List<BloodSample> bloodSamples;
@@ -24,16 +25,16 @@ public class Lab extends Department {
 		return super.toString();
 	}
 	
-	public List<BloodSample> getBloodSamples() {
-		return bloodSamples;
+	public Optional<List<BloodSample>> getBloodSamples() {
+		return Optional.of(bloodSamples);
 	}
 	
 	public void setBloodSamples(List<BloodSample> bloodSamples) {
 		this.bloodSamples = bloodSamples;
 	}
 	
-	public List<UrineSample> getUrineSamples() {
-		return urineSamples;
+	public Optional<List<UrineSample>> getUrineSamples() {
+		return Optional.of(urineSamples);
 	}
 	
 	public void setUrineSamples(List<UrineSample> urineSamples) {

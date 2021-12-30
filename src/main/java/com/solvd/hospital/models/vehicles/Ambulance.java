@@ -4,7 +4,7 @@ import com.solvd.hospital.locations.Address;
 import com.solvd.hospital.models.Patient;
 import com.solvd.hospital.models.buildings.Hospital;
 
-public class Ambulance extends Drivable {
+public class Ambulance extends Vehicle {
 	private boolean sirenStatus;
 
 	public Ambulance() {

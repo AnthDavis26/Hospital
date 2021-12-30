@@ -1,4 +1,4 @@
-package com.solvd.hospital.runner;
+package com.solvd.hospital;
 
 import com.solvd.hospital.exceptions.InvalidEmployeeException;
 import com.solvd.hospital.exceptions.InvalidWeightException;
@@ -12,13 +12,10 @@ import com.solvd.hospital.models.employees.Receptionist;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-import java.text.ParseException;
-
 public class PatientSimulation {
         public static final Logger logger = LogManager.getLogger(PatientSimulation.class);
 
-        public static void main(String[] args) throws IOException, ParseException {
+        public static void main(String[] args) {
             Doctor doctor = new Doctor();
             Nurse nurse = new Nurse();
             Receptionist receptionist = new Receptionist();
@@ -33,7 +30,7 @@ public class PatientSimulation {
             try {
                 nurse.logWeightOf(patient, 1.0);
             } catch (InvalidWeightException e) {
-                logger.error(e.getLocalizedMessage());
+                logger.error(e);
             }
 
             nurse.askAboutSymptoms(patient);
@@ -42,7 +39,7 @@ public class PatientSimulation {
             try {
                 nurse.retrieveEmployee(doctor);
             } catch (InvalidEmployeeException e) {
-                logger.error(e.getLocalizedMessage());
+                logger.error(e);
             }
 
             patient.waitForDoctor();
@@ -57,7 +54,7 @@ public class PatientSimulation {
                 doctor.prescribe(patient, prescription);
                 doctor.orderLabTestsFor(patient);
             } catch (UndiagnosedPatientException e) {
-                logger.error(e.getLocalizedMessage());
+                logger.error(e);
             }
         }
 }

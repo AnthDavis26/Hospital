@@ -9,6 +9,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class Person implements IPerson {
 	private String firstName;
@@ -124,8 +125,8 @@ public abstract class Person implements IPerson {
 		this.weightLbs = weightLbs;
 	}
 	
-	public Address getResidenceAddress() {
-		return residenceAddress;
+	public Optional<Address> getResidenceAddress() {
+		return Optional.of(residenceAddress);
 	}
 
 	public void setResidenceAddress(Address residenceAddress) {

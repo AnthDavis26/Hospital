@@ -1,5 +1,7 @@
 package com.solvd.hospital.models;
 
+import java.util.Optional;
+
 public abstract class Equipment {
 	private String brand;
 	private String model;
@@ -27,8 +29,8 @@ public abstract class Equipment {
 		this.brand = brand;
 	}
 
-	public String getModel() {
-		return model;
+	public Optional<String> getModel() {
+		return Optional.of(model);
 	}
 
 	public void setModel(String model) {

@@ -3,6 +3,7 @@ package com.solvd.hospital.models.departments;
 import com.solvd.hospital.interfaces.models.departments.IEmergency;
 import com.solvd.hospital.models.Patient;
 
+import java.util.Optional;
 import java.util.Queue;
 
 public class Emergency extends Department implements IEmergency {
@@ -23,8 +24,8 @@ public class Emergency extends Department implements IEmergency {
 		return super.toString();
 	}
 
-	public Queue<Patient> getPatientQueue() {
-		return patientQueue;
+	public Optional<Queue<Patient>> getPatientQueue() {
+		return Optional.of(patientQueue);
 	}
 
 	public void setPatientQueue(Queue<Patient> queue) {
