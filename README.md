@@ -1,2 +1,2 @@
 # Hospital
-Object-oriented hierarchy and implementation within the hospital business domain.
+Maven-based project. Object-oriented hierarchy and implementation representing a hospital business domain.
