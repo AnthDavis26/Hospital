@@ -13,7 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class PatientSimulation {
-        public static final Logger logger = LogManager.getLogger(PatientSimulation.class);
+        public static final Logger LOGGER = LogManager.getLogger(PatientSimulation.class);
 
         public static void main(String[] args) {
             Doctor doctor = new Doctor();
@@ -30,16 +30,15 @@ public class PatientSimulation {
             try {
                 nurse.logWeightOf(patient, 1.0);
             } catch (InvalidWeightException e) {
-                logger.error(e);
+                LOGGER.error(e);
             }
 
             nurse.askAboutSymptoms(patient);
-            patient.tellSymptomsTo(nurse);
 
             try {
                 nurse.retrieveEmployee(doctor);
             } catch (InvalidEmployeeException e) {
-                logger.error(e);
+                LOGGER.error(e);
             }
 
             patient.waitForDoctor();
@@ -54,7 +53,7 @@ public class PatientSimulation {
                 doctor.prescribe(patient, prescription);
                 doctor.orderLabTestsFor(patient);
             } catch (UndiagnosedPatientException e) {
-                logger.error(e);
+                LOGGER.error(e);
             }
         }
 }

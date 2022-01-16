@@ -28,7 +28,7 @@ import java.util.function.IntPredicate;
 import java.util.function.UnaryOperator;
 
 public class LambdasAndStreams {
-    public static final Logger logger = LogManager.getLogger(LambdasAndStreams.class);
+    public static final Logger LOGGER = LogManager.getLogger(LambdasAndStreams.class);
 
     public static void main(String args[]) throws IOException {
         LinkedList<Integer> linkedList = new LinkedList<>();
@@ -37,7 +37,7 @@ public class LambdasAndStreams {
             linkedList.add(i);
 
         linkedList.forEach(
-                (n) -> logger.info(n)
+                (n) -> LOGGER.info(n)
         );
 
         Receptionist receptionist = new Receptionist();
@@ -70,14 +70,14 @@ public class LambdasAndStreams {
                 map.entrySet().toString(), StandardCharsets.UTF_8);
 
         // java.util.functions
-        BiConsumer<Integer, Double> bc = (x, y) -> logger.info(x + y);
+        BiConsumer<Integer, Double> bc = (x, y) -> LOGGER.info(x + y);
         bc.accept(25,50.2);
 
         DoubleToLongFunction dtl = (x) -> Double.doubleToLongBits(x);
-        logger.info(dtl.applyAsLong(1234.5678));
+        LOGGER.info(dtl.applyAsLong(1234.5678));
 
         IntPredicate ip = (x) -> x > 10;
-        logger.info(ip.test(5));
+        LOGGER.info(ip.test(5));
 
         UnaryOperator<Patient> makePatientHealthy = (x) -> {
             x.setCondition(PatientCondition.GOOD);
@@ -90,15 +90,15 @@ public class LambdasAndStreams {
 
         // Custom functional interfaces
         StringToDoubleFunction stf = (x) -> x.length() * 3.14;
-        logger.info(stf.convert("Some String"));
+        LOGGER.info(stf.convert("Some String"));
 
-        LayOffEmployee loe = (x) -> logger.info(x.getFirstName() + " has been laid off.");
+        LayOffEmployee loe = (x) -> LOGGER.info(x.getFirstName() + " has been laid off.");
         loe.statement(technician);
 
         GetAge<LinkedList<Integer>> ga = (x) -> x.size() + 100;
-        logger.info(ga.years(linkedList));
+        LOGGER.info(ga.years(linkedList));
 
-        NoArgumentFunction naf = ()-> logger.info("This will always be performed when called.");
+        NoArgumentFunction naf = ()-> LOGGER.info("This will always be performed when called.");
         naf.task();
     }
 }
