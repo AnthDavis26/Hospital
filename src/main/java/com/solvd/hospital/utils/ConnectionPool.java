@@ -6,7 +6,7 @@ public class ConnectionPool {
     private static ConnectionPool instance;
     private static LinkedBlockingQueue<Connection> pool;
     private static final int MAX_POOL_CAPACITY = 10;
-    private static int existingConnectionsCount = 0;
+    private static Integer existingConnectionsCount = 0;
 
     private ConnectionPool(){} // Prevent construction
 
@@ -18,19 +18,14 @@ public class ConnectionPool {
     }
 
     public Connection getConnection() throws InterruptedException {
-        if (existingConnectionsCount < MAX_POOL_CAPACITY)
-        {
-            existingConnectionsCount++;
-            return new Connection();
+        synchronized (existingConnectionsCount) {
+            if (existingConnectionsCount < MAX_POOL_CAPACITY) {
+                existingConnectionsCount++;
+                return new Connection();
+            }
+
+            return pool.take();
         }
-
-        Connection con = null;
-
-        synchronized (pool) {
-            con = pool.take();
-        }
-
-        return con;
     }
 
     public void releaseConnection(Connection con) {
